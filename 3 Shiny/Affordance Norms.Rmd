@@ -1,0 +1,122 @@
+---
+output:
+  html_document:
+    toc: TRUE
+    toc_float: TRUE
+runtime: shiny
+title: "Affordance Norms"
+---
+<p>
+
+```{r setup, echo = FALSE, warning = FALSE, include = FALSE}
+##load libraries
+library(shiny)
+library(DT)
+
+##load datasets here
+affordances = read.csv("Data/Affordance Norms.csv")
+cues = read.csv("Data/Cue Table.csv")
+
+##use this space to update column headings, round values, etc.
+affordances$AFS = round(affordances$AFS, digits = 3)
+
+colnames(affordances)[1] = "Cue"
+colnames(affordances)[2] = "Affordance"
+
+cues$BOI = round(cues$BOI, digits = 3)
+cues$Concrete = round(cues$Concrete, digits = 3)
+cues$SUBTLEX = round(cues$SUBTLEX, digits = 3)
+
+colnames(cues)[1] = "Cue"
+colnames(cues)[3] = "Concreteness"
+colnames(cues)[4] = "SUBLTEX-US"
+
+```
+## General Overview
+
+This page provides a searchable portal for our affordance norming project. The following dataset contains affordance responses for 3000 concrete nouns and displays affordance strength values and set sizes. The first table provides lexical properties for each cue item, including body-object interaction ratings ([Pexman et al., 2019](https://link.springer.com/article/10.3758/s13428-018-1171-z)), concreteness ([Brysbaert et al., 2014](https://link.springer.com/article/10.3758/s13428-013-0403-5)), and SUBLTEX frequency ([Brysbaert & New, 2009](https://link.springer.com/article/10.3758/BRM.41.4.977)). The second table provides options for searching this dataset while also controlling for forward association strength (FAS) and indirect association strength (IAS) values derived from the Small-World of Words project ([De Deyne et al., 2019](https://link.springer.com/article/10.3758/s13428-018-1115-7)). The filtered table can then be downloaded to .csv or.xlsx for further analysis. Please note that if you are downloading this application to run locally via RStudio, you will need to download the entire folder on our [GitHub repository](https://github.com/npm27/). 
+
+**Questions?** Email <nicholas.maxwell@msutexas.edu>
+
+## Cue Properties
+
+### Variable Descriptions
+
+**Body-Object Interaction:** (DESCRIPTIONS WILL GO HERE!)
+
+**Concreteness:**
+
+**Frequency:**
+
+### Table 1: Cue Properties
+
+```{r cue property table, echo = FALSE}
+#####Define UI####
+ui = fluidPage(
+   div(style = 'overflow-x: scroll', DTOutput("affordance_table"))
+   ) #fluidpage
+
+server = function(input, output) {
+   
+   output$affordance_table = renderDT(server = TRUE, {
+     
+     datatable(cues, 
+               filter = 'top',
+               rownames = FALSE,
+               extensions = 'Buttons',
+               options = list(
+                 dom = 'rtpB',
+                 buttons = c('copy', 'csv', 'excel'),
+                 pageLength = 10
+               ) #close options
+               ) #close data table 
+     
+   }) #close render DT
+      
+}
+
+# Run the application 
+shinyApp(ui = ui, server = server, options = list(height = 550))
+```
+
+## Cue-Affordance Pairs
+
+### Variable Descriptions
+**Affordance Strength (AFS):** The probability of a specific affordance being given in response to a cue. This value is computed by dividing the frequency count of each unique response by the total number of responses the cue receives. Higher values reflect a more common use.
+
+**Affordance Set-Size (AFSS):** The total number of unique affordance responses to a cue.
+
+**Forward Association Strength (FAS)** The probability of the cue item eliciting the target as a response. Higher values reflect stronger association strength.
+
+**Indirect Association Strength (IAS)** Reflects proximity within the semantic network. Higher values indicate greater similarity between cue and target.
+
+### Table 2. Cue-Affordance Pairs
+
+```{r cue-affordance table, echo = FALSE}
+#####Define UI####
+ui = fluidPage(
+   div(style = 'overflow-x: scroll', DTOutput("affordance_table"))
+   ) #fluidpage
+
+server = function(input, output) {
+   
+   output$affordance_table = renderDT(server = TRUE, {
+     
+     datatable(affordances, 
+               filter = 'top',
+               rownames = FALSE,
+               extensions = 'Buttons',
+               options = list(
+                 dom = 'rtpB',
+                 buttons = c('copy', 'csv', 'excel'),
+                 pageLength = 10
+               ) #close options
+               ) #close data table 
+     
+   }) #close render DT
+      
+}
+
+# Run the application 
+shinyApp(ui = ui, server = server, options = list(height = 550))
+```
