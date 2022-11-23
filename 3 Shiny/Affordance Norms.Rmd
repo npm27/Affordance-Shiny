@@ -32,21 +32,28 @@ colnames(cues)[3] = "Concreteness"
 colnames(cues)[4] = "SUBLTEX-US"
 
 ```
+
+
 ## General Overview
 
-This page provides a searchable portal for our affordance norming project. The following dataset contains affordance responses for 3000 concrete nouns and displays affordance strength values and set sizes. The first table provides lexical properties for each cue item, including body-object interaction ratings ([Pexman et al., 2019](https://link.springer.com/article/10.3758/s13428-018-1171-z)), concreteness ([Brysbaert et al., 2014](https://link.springer.com/article/10.3758/s13428-013-0403-5)), and SUBLTEX frequency ([Brysbaert & New, 2009](https://link.springer.com/article/10.3758/BRM.41.4.977)). The second table provides options for searching this dataset while also controlling for forward association strength (FAS) and indirect association strength (IAS) values derived from the Small-World of Words project ([De Deyne et al., 2019](https://link.springer.com/article/10.3758/s13428-018-1115-7)). The filtered table can then be downloaded to .csv or.xlsx for further analysis. Please note that if you are downloading this application to run locally via RStudio, you will need to download the entire folder on our [GitHub repository](https://github.com/npm27/). 
+This page provides a searchable portal for our affordance norming project. The following dataset contains affordance responses for 3000 concrete nouns and displays affordance strength values (AFS) and affordance set sizes (AFSS). The first table provides lexical properties for each cue item, including body-object interaction ratings ([Pexman et al., 2019](https://link.springer.com/article/10.3758/s13428-018-1171-z)), concreteness ([Brysbaert et al., 2014](https://link.springer.com/article/10.3758/s13428-013-0403-5)), and SUBLTEX frequency ([Brysbaert & New, 2009](https://link.springer.com/article/10.3758/BRM.41.4.977)). The second table provides options for searching this dataset while also controlling for forward association strength (FAS) and indirect association strength (IAS) values derived from the Small-World of Words project ([De Deyne et al., 2019](https://link.springer.com/article/10.3758/s13428-018-1115-7)). The filtered table can then be downloaded to .csv or.xlsx for further analysis. Please note that if you are downloading this application to run locally via RStudio, you will need to download the entire folder on our [GitHub repository](https://github.com/npm27/). 
 
 **Questions?** Email <nicholas.maxwell@msutexas.edu>
 
 ## Cue Properties
 
+**Note**: A .csv file containing the full set of cue properties is available for download [here](LINK).
+
 ### Variable Descriptions
 
-**Body-Object Interaction:** (DESCRIPTIONS WILL GO HERE!)
+**Body-Object Interaction (BOI):** Values reported in the *BOI* column assess the ease with which individuals can interact with an object. Higher ratings denote greater ease of interaction. These ratings were taken from Pexman et al. (2019)
 
-**Concreteness:**
+**Concreteness:** Measures the degree to which a concept refers to a perceptual, tangible object. Ratings are taken from Brysbaert et al. (2014).
 
-**Frequency:**
+**Frequency:** Captures frequency of use in everyday language. Values reported in the *frequency* column are derived from the SUBTLEX-US English subtitle project (Brysbaert & New, 2009).
+
+
+
 
 ### Table 1: Cue Properties
 
@@ -79,16 +86,23 @@ server = function(input, output) {
 shinyApp(ui = ui, server = server, options = list(height = 550))
 ```
 
+
+
 ## Cue-Affordance Pairs
 
-### Variable Descriptions
-**Affordance Strength (AFS):** The probability of a specific affordance being given in response to a cue. This value is computed by dividing the frequency count of each unique response by the total number of responses the cue receives. Higher values reflect a more common use.
+**Note**: You can download a .csv file containing the full set of affordance norms [here](LINK).
 
-**Affordance Set-Size (AFSS):** The total number of unique affordance responses to a cue.
+### Variable Descriptions
+**Affordance Strength (AFS):** The probability of a specific affordance being given in response to a cue. This value is computed by dividing the frequency count of each unique response by the total number of responses the cue receives. Higher AFS values reflect more common affordances.
+
+**Affordance Set-Size (AFSS):** Reflects the total number of unique affordance responses to a cue. Higher values indicate a greater number of affordances responses to a given cue.
 
 **Forward Association Strength (FAS)** The probability of the cue item eliciting the target as a response. Higher values reflect stronger association strength.
 
 **Indirect Association Strength (IAS)** Reflects proximity within the semantic network. Higher values indicate greater similarity between cue and target.
+
+
+
 
 ### Table 2. Cue-Affordance Pairs
 
