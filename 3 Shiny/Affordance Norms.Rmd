@@ -3,6 +3,14 @@ output:
   html_document:
     toc: TRUE
     toc_float: TRUE
+    theme:
+      bg: "#101010"
+      fg: "#FDF7F7"
+      primary: "#33a597"
+      base_font:
+        google: "Prompt"
+      code_font:
+        google: "JetBrains Mono"
 runtime: shiny
 title: "Affordance Norms"
 ---
@@ -12,6 +20,8 @@ title: "Affordance Norms"
 ##load libraries
 library(shiny)
 library(DT)
+library(bslib)
+library(shinythemes)
 
 ##load datasets here
 affordances = read.csv("Data/Affordance Norms.csv")
@@ -50,7 +60,7 @@ This page provides a searchable portal for our affordance norming project. The f
 
 **Concreteness:** Measures the degree to which a concept refers to a perceptual, tangible object. Ratings are taken from Brysbaert et al. (2014).
 
-**Frequency:** Captures frequency of use in everyday language. Values reported in the *frequency* column are derived from the SUBTLEX-US English subtitle project (Brysbaert & New, 2009).
+**Frequency:** Captures frequency of use in everyday language. Values reported in the *frequency* column are derived from the SUBTLEX-US database, which generated frequency values for 51 million English words using movie and television subtitles (Brysbaert & New, 2009).
 
 
 
@@ -60,14 +70,26 @@ This page provides a searchable portal for our affordance norming project. The f
 ```{r cue property table, echo = FALSE}
 #####Define UI####
 ui = fluidPage(
-   div(style = 'overflow-x: scroll', DTOutput("affordance_table"))
+   div(style = 'overflow-x: scroll', DTOutput("affordance_table")),
+   theme = shinytheme("cyborg"),
+   
+   #change the color of page 
+   tags$style(HTML(".dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper    .dataTables_info, .dataTables_wrapper .dataTables_processing,.dataTables_wrapper .dataTables_paginate .paginate_button, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled {
+            color: #33a597 !important;
+        }")),
+   
+   tags$style(HTML('table.dataTable tr.selected td, table.dataTable td.selected {background-color: #33a597 !important;}')),
    ) #fluidpage
 
 server = function(input, output) {
    
    output$affordance_table = renderDT(server = TRUE, {
      
-     datatable(cues, 
+     datatable(cues,
+               callback=JS('$("button.buttons-copy").css("background","#33a597"); 
+                    $("button.buttons-csv").css("background","#33a597");
+                    $("button.buttons-excel").css("background","#33a597");
+                    return table;'),
                filter = 'top',
                rownames = FALSE,
                extensions = 'Buttons',
@@ -109,7 +131,14 @@ shinyApp(ui = ui, server = server, options = list(height = 550))
 ```{r cue-affordance table, echo = FALSE}
 #####Define UI####
 ui = fluidPage(
-   div(style = 'overflow-x: scroll', DTOutput("affordance_table"))
+   div(style = 'overflow-x: scroll', DTOutput("affordance_table")),
+   theme = shinytheme("cyborg"),
+   #change the color of page 
+   tags$style(HTML(".dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper    .dataTables_info, .dataTables_wrapper .dataTables_processing,.dataTables_wrapper .dataTables_paginate .paginate_button, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled {
+            color: #33a597 !important;
+        }")),
+   
+   tags$style(HTML('table.dataTable tr.selected td, table.dataTable td.selected {background-color: #33a597 !important;}')),
    ) #fluidpage
 
 server = function(input, output) {
@@ -117,6 +146,10 @@ server = function(input, output) {
    output$affordance_table = renderDT(server = TRUE, {
      
      datatable(affordances, 
+               callback=JS('$("button.buttons-copy").css("background","#33a597"); 
+                    $("button.buttons-csv").css("background","#33a597");
+                    $("button.buttons-excel").css("background","#33a597");
+                    return table;'),
                filter = 'top',
                rownames = FALSE,
                extensions = 'Buttons',
