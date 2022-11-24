@@ -119,13 +119,6 @@ shinyApp(ui = ui, server = server, options = list(height = 550))
 
 **Affordance Set-Size (AFSS):** Reflects the total number of unique affordance responses to a cue. Higher values indicate a greater number of affordances responses to a given cue.
 
-**Forward Association Strength (FAS)** The probability of the cue item eliciting the target as a response. Higher values reflect stronger association strength.
-
-**Indirect Association Strength (IAS)** Reflects proximity within the semantic network. Higher values indicate greater similarity between cue and target.
-
-
-
-
 ### Table 2. Cue-Affordance Pairs
 
 ```{r cue-affordance table, echo = FALSE}
