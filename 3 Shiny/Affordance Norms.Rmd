@@ -46,7 +46,7 @@ colnames(cues)[4] = "SUBLTEX-US"
 
 ## General Overview
 
-This page provides a searchable interface for our affordance norming project. The data is organized into two tables, which provide lexical information about each cue item (Table 1) and normative values assessing affordance properties (Table 2). The final dataset contains affordance responses for 3000 concrete nouns and displays affordance strength values (AFS) and affordance set sizes (AFSS).  Please note that if you are downloading this application to run locally via RStudio, you will need to download the entire folder on our [GitHub repository](https://github.com/npm27/). 
+This page provides a searchable interface for our affordance norming project. The data is organized into two tables, which provide lexical information about each cue item (Table 1) and normative values assessing affordance properties (Table 2). The final dataset contains affordance responses for 3000 concrete nouns and displays affordance strength values (AFS) and affordance set sizes (AFSS). Please note that if you are downloading this application to run locally via RStudio, you will need to download the entire folder from [GitHub](https://github.com/npm27/Affordance-Shiny). 
 
 **Questions?** Email <nicholas.maxwell@msutexas.edu>
 
