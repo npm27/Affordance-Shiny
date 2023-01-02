@@ -28,14 +28,14 @@ affordances = read.csv("Data/Affordance Norms.csv")
 cues = read.csv("Data/Cue Table.csv")
 
 ##use this space to update column headings, round values, etc.
-affordances$AFS = round(affordances$AFS, digits = 3)
+affordances$AFS = format(round(affordances$AFS, digits = 3), nsmall = 3)
 
 colnames(affordances)[1] = "Cue"
 colnames(affordances)[2] = "Affordance"
 
-cues$BOI = round(cues$BOI, digits = 3)
-cues$Concrete = round(cues$Concrete, digits = 3)
-cues$SUBTLEX = round(cues$SUBTLEX, digits = 3)
+cues$BOI = format(round(cues$BOI, digits = 3), nsmall = 3)
+cues$Concrete = format(round(cues$Concrete, digits = 3), nsmall = 3)
+cues$SUBTLEX = format(round(cues$SUBTLEX, digits = 3), nsmall = 3)
 
 colnames(cues)[1] = "Cue"
 colnames(cues)[3] = "Concreteness"
@@ -100,7 +100,7 @@ server = function(input, output) {
                options = list(
                  dom = 'rtpB',
                  buttons = c('copy', 'csv', 'excel'),
-                 pageLength = 10
+                 paging = FALSE
                ) #close options
                ) #close data table 
      
@@ -162,7 +162,7 @@ server = function(input, output) {
                options = list(
                  dom = 'rtpB',
                  buttons = c('copy', 'csv', 'excel'),
-                 pageLength = 10
+                 paging = FALSE
                ) #close options
                ) #close data table 
      
