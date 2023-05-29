@@ -46,7 +46,7 @@ colnames(cues)[4] = "SUBLTEX-US"
 
 ## General Overview
 
-This page provides a searchable interface for our affordance norming project. The data is organized into two tables, which provide lexical information about each cue item (Table 1) and normative values assessing affordance properties (Table 2). The final dataset contains affordance responses for 3000 concrete nouns and displays affordance strength values (AFS) and affordance set sizes (AFSS). Please note that if you are downloading this application to run locally via RStudio, you will need to download the entire folder from [GitHub](https://github.com/npm27/Affordance-Shiny). 
+This page provides a searchable interface for our affordance norming project. The data is organized into two tables, which provide lexical information about each cue item (Table 1) and normative values assessing affordance properties (Table 2). The final dataset contains affordance responses for 3000 concrete nouns and displays affordance strength values (AFS), affordance set sizes (AFSS), as well as several lexical and semantic variables. Please note that if you are downloading this application to run locally via RStudio, you will need to download the entire folder from [GitHub](https://github.com/npm27/Affordance-Shiny). 
 
 **Questions?** Email <nicholas.maxwell@msutexas.edu>
 
@@ -54,7 +54,7 @@ This page provides a searchable interface for our affordance norming project. Th
 
 Table 1 provides lexical properties for each cue item, including body-object interaction ratings ([Pexman et al., 2019](https://link.springer.com/article/10.3758/s13428-018-1171-z)), concreteness ([Brysbaert et al., 2014](https://link.springer.com/article/10.3758/s13428-013-0403-5)), and SUBLTEX frequency ([Brysbaert & New, 2009](https://link.springer.com/article/10.3758/BRM.41.4.977)).
 
-**Note**: A .csv file containing the full set of cue properties is available for download [here](LINK).
+**Note**: A .csv file containing the full set of cue properties is available for download [here](LINK) or using the buttons located at the bottom of the table.
 
 ### Column Descriptions
 
@@ -62,11 +62,9 @@ Table 1 provides lexical properties for each cue item, including body-object int
 
 **Body-Object Interaction (BOI):** Values reported in the *BOI* column assess the ease with which individuals can interact with an object. Higher ratings denote greater ease of interaction. These ratings were taken from Pexman et al. (2019)
 
-**Concreteness:** Measures the degree to which a concept refers to a perceptual, tangible object. Ratings are taken from Brysbaert et al. (2014).
+**Concreteness:** *Concreteness* ratings measure the degree to which a concept refers to a perceptual, tangible object. Values in this column are derived from Brysbaert et al. (2014).
 
 **Frequency:** This value captures frequency of use in everyday language. Values reported in the *frequency* column are derived from the SUBTLEX-US frequency database, which contains frequency estimates for 51 million English words derived from movie and television subtitles (Brysbaert & New, 2009).
-
-
 
 
 ### Table 1: Cue Item Lexical Properties {#table1}
@@ -118,7 +116,7 @@ shinyApp(ui = ui, server = server, options = list(height = 550))
 
 Table 2 provides options for searching this dataset while also controlling for forward association strength (FAS) and indirect association strength (IAS) values derived from the Small-World of Words project ([De Deyne et al., 2019](https://link.springer.com/article/10.3758/s13428-018-1115-7)). The filtered table can then be downloaded to .csv or.xlsx for further analysis. 
 
-**Note**: You can download a .csv file containing the full set of affordance norms [here](LINK).
+**Note**: You can download a .csv file containing the full set of affordance norms [here](https://github.com/npm27/Affordance-Norms/blob/main/4%20Analyses/R/Affordance%20Norms.csv) or using the buttons located at the bottom of the table.
 
 ### Column Descriptions
 
@@ -130,9 +128,11 @@ Table 2 provides options for searching this dataset while also controlling for f
 
 **Affordance Set-Size (AFSS):** This column displays the total number of unique targets that were provided for each cue. Higher values indicate a greater number of perceived affordances.
 
-**n:** The number of individuals who responded to the cue. While at least 30 participants responded to each cue item, this value varied across items.
+**Forward Strength (FSG):** Values in this column denote forward strength values taken from the University of South Florida Free Association Norms ([Nelson et al., 2004](https://link.springer.com/article/10.3758/BF03195588)). FSG measures the association between cue and target. Higher values denote greater probability of target being elicited as a response.
 
-### Table 2. Cue-Target Affordance Properties
+**n:** The number of individuals who responded to a given cue.
+
+### Table 2: Cue-Target Affordance Properties {#table2}
 
 ```{r cue-affordance-table, echo = FALSE}
 #####Define UI####
