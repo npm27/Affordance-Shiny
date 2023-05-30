@@ -54,7 +54,7 @@ This page provides a searchable interface for our affordance norming project. Th
 
 Table 1 provides lexical properties for each cue item, including body-object interaction ratings ([Pexman et al., 2019](https://link.springer.com/article/10.3758/s13428-018-1171-z)), concreteness ([Brysbaert et al., 2014](https://link.springer.com/article/10.3758/s13428-013-0403-5)), and SUBLTEX frequency ([Brysbaert & New, 2009](https://link.springer.com/article/10.3758/BRM.41.4.977)).
 
-**Note**: A .csv file containing the full set of cue properties is available for download [here](LINK) or using the buttons located at the bottom of the table.
+**Note:** A .csv file containing the full set of cue properties is available for download [here](LINK) or using the buttons located at the bottom of the table.
 
 ### Column Descriptions
 

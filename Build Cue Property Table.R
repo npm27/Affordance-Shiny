@@ -13,6 +13,15 @@ BOI = read.csv("2 Norm Sets/BOI.csv")
 con = read.csv("2 Norm Sets/Concreteness.csv")
 frq = read.csv("2 Norm Sets/SUBTLEX-US.csv")
 
+BOI$Word = tolower(BOI$Word)
+con$Word = tolower(con$Word)
+frq$Word = tolower(frq$Word)
+
+##load the n's
+n = read.csv("1 Affordance Data/affordance ns.csv")
+
+n$Cue = tolower(n$Cue)
+
 ###combine!
 ##BOI
 #merge
@@ -43,5 +52,9 @@ combined3 = combined3[ , -c(4:8, 10:11)]
 
 colnames(combined3)[4] = "SUBTLEX"
 
+##Add in the n's
+combined4 = merge(combined3, n, by.x = "cues", 
+                  by.y = "Cue", all.x = TRUE, all.y = FALSE)
+
 ####Write to .csv####
-#write.csv(combined3, file = "Cue Table.csv", row.names = F)
+#write.csv(combined4, file = "Cue Table.csv", row.names = F)
