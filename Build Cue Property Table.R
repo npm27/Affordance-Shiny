@@ -12,10 +12,12 @@ cues = data.frame(cues)
 BOI = read.csv("2 Norm Sets/BOI.csv")
 con = read.csv("2 Norm Sets/Concreteness.csv")
 frq = read.csv("2 Norm Sets/SUBTLEX-US.csv")
+aoa = read.csv("2 Norm Sets/Kuperman AOA.csv")
 
 BOI$Word = tolower(BOI$Word)
 con$Word = tolower(con$Word)
 frq$Word = tolower(frq$Word)
+aoa$Word = tolower(aoa$Word)
 
 ##load the n's
 n = read.csv("1 Affordance Data/affordance ns.csv")
@@ -56,5 +58,15 @@ colnames(combined3)[4] = "SUBTLEX"
 combined4 = merge(combined3, n, by.x = "cues", 
                   by.y = "Cue", all.x = TRUE, all.y = FALSE)
 
+##Add in the AOAs
+combined5 = merge(combined4, aoa, by.x = "cues",
+                  by.y = "Word", all.x = TRUE, all.y = FALSE)
+
+combined5 = combined5[ , -c(6:8, 10:11)]
+colnames(combined5)[6] = "AoA"
+
+##reorder columns (put n last)
+combined5 = combined5[ , c(1:4, 6, 5)]
+
 ####Write to .csv####
-#write.csv(combined4, file = "Cue Table.csv", row.names = F)
+#write.csv(combined5, file = "Cue Table.csv", row.names = F)

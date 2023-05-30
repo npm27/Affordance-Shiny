@@ -24,7 +24,7 @@ library(bslib)
 library(shinythemes)
 
 ##load datasets here
-affordances = read.csv("Data/Affordance Norms.csv")
+affordances = read.csv("Data/Affordance Norms_fsg.csv")
 cues = read.csv("Data/Cue Table.csv")
 
 ##use this space to update column headings, round values, etc.
@@ -37,9 +37,17 @@ cues$BOI = format(round(cues$BOI, digits = 3), nsmall = 3)
 cues$Concrete = format(round(cues$Concrete, digits = 3), nsmall = 3)
 cues$SUBTLEX = format(round(cues$SUBTLEX, digits = 3), nsmall = 3)
 
+##fix column names
 colnames(cues)[1] = "Cue"
 colnames(cues)[3] = "Concreteness"
 colnames(cues)[4] = "Frequency"
+
+##fix numeric variables
+cues$BOI = as.numeric(cues$BOI)
+cues$Concreteness = as.numeric(cues$Concreteness)
+cues$Frequency = as.numeric(cues$Frequency)
+
+affordances$AFS = as.numeric(affordances$AFS)
 
 ```
 
@@ -52,9 +60,9 @@ This page provides a searchable interface for our affordance norming project. Th
 
 ## Cue Properties
 
-Table 1 provides lexical properties for each cue item, including body-object interaction ratings ([Pexman et al., 2019](https://link.springer.com/article/10.3758/s13428-018-1171-z)), concreteness ([Brysbaert et al., 2014](https://link.springer.com/article/10.3758/s13428-013-0403-5)), and SUBLTEX frequency ([Brysbaert & New, 2009](https://link.springer.com/article/10.3758/BRM.41.4.977)).
+Table 1 provides lexical properties for each cue item, including body-object interaction ratings (*BOI*; [Pexman et al., 2019](https://link.springer.com/article/10.3758/s13428-018-1171-z)), *concreteness* ([Brysbaert et al., 2014](https://link.springer.com/article/10.3758/s13428-013-0403-5)), *SUBLTEX frequency* ([Brysbaert & New, 2009](https://link.springer.com/article/10.3758/BRM.41.4.977)), and age-of-acquisition (*AOA*; [Kuperman et al., 2012](https://link.springer.com/article/10.3758/s13428-012-0210-4)), and the number of participants who responded to each cue in our dataset (*n*).
 
-<span style="color:#33a597">**Note:**</span> A .csv file containing the full set of cue properties is available for download [here](https://github.com/npm27/Affordance-Shiny/blob/main/Cue%20Table.csv) or using the buttons located at the bottom of the table.
+<span style="color:#33a597">**Note:**</span> A .csv file containing the full set of cue properties is available for download [here](https://github.com/npm27/Affordance-Shiny/blob/main/Cue%20Table.csv). The data can also be downloaded or copied to the clipboard using the buttons located at the bottom of the table.
 
 ### Column Descriptions
 
@@ -66,6 +74,9 @@ Table 1 provides lexical properties for each cue item, including body-object int
 
 <span style="color:#33a597">**Frequency:**</span> This value captures frequency of use in everyday language. Values reported in the *frequency* column are derived from the SUBTLEX-US frequency database, which contains frequency estimates for 51 million English words derived from movie and television subtitles (Brysbaert & New, 2009).
 
+<span style="color:#33a597">**Age of Acquisition (AoA):**</span> *AoA* reflects the average age at which a word is learned. Values reported in this column are take from Kuperman et al. (2012).
+
+<span style="color:#33a597">**n:**</span> This column displays the number of participants who responded to each cue item in the affordance dataset.
 
 ### Table 1: Cue Item Lexical Properties {#table1}
 
@@ -114,19 +125,23 @@ shinyApp(ui = ui, server = server, options = list(height = 550))
 
 ## Cue-Target Affordance Properties
 
-Table 2 provides various options for searching and filtering the affordance norms dataset. The filtered table can then be downloaded to .csv or.xlsx for further analysis. 
+Table 2 displays the full affordance norms dataset and provides options for searching and filtering the dataset. The filtered table can be downloaded to .csv or.xlsx for further analysis. Forward strength (FSG) values derived from ([Nelson et al., 2004](https://link.springer.com/article/10.3758/BF03195588)) and cosine values (COS) taken from ([Buchanan et al., 2019](https://link.springer.com/article/10.3758/s13428-019-01243-z)) are provided when available.
 
-<span style="color:#33a597">**Note:**</span> You can download a .csv file containing the full set of affordance norms [here](https://github.com/npm27/Affordance-Norms/blob/main/4%20Analyses/R/Affordance%20Norms.csv) or using the buttons located at the bottom of the table.
+<span style="color:#33a597">**Note:**</span> You can download a .csv file containing the full set of affordance norms [here](https://github.com/npm27/Affordance-Norms/blob/main/4%20Analyses/R/Affordance%20Norms.csv). The data can also be downloaded or copied to the clipboard using the buttons located at the bottom of the table.
 
 ### Column Descriptions
 
 <span style="color:#33a597">**Cue:**</span> The word presented in the norming task. Participants provided open-ended responses indicating how each cue item could be used (i.e., what actions the presented object afforded).
 
-<span style="color:#33a597">**Target:**</span> Responses to each cue. Items in the *Target* column have been lemmatized. Note that only verb responses are displayed in this table.
+<span style="color:#33a597">**Target:**</span> The affordance response to each cue. Items in the *Target* column have been lemmatized. Note that only verb responses are displayed in this table.
 
-<span style="color:#33a597">**Affordance Strength (AFS):**</span> Values in this column reflect the probability of a specific target being provided as a response to a cue. AFS values were computed by first computing the frequency of each unique response to a cue, which was then divided by the total number of responses the cue received. Higher AFS values indicate a greater liklihood that an object will elicit a specific affordance as an action response. Note that this value only considers *verb* responses, as by nature, affordances reflect action properties.
+<span style="color:#33a597">**Affordance Strength (AFS):**</span> Values in this column reflect the probability of a specific target being provided as a response to a cue. AFS values were computed by first computing the frequency of each unique response to a cue, which was then divided by the total number of responses the cue received. Higher AFS values indicate a greater likelihood that an object will elicit a specific affordance as an action response. Note that this value only considers *verb* responses, as by nature, affordances reflect action properties.
 
 <span style="color:#33a597">**Affordance Set-Size (AFSS):**</span> This column displays the total number of unique targets that were provided for each cue. Higher values indicate a greater number of perceived affordances.
+
+<span style="color:#33a597">**Forward Strength (FSG):**</span> Values in this column denote forward strength values taken from the University of South Florida Free Association Norms (Nelson et al., 2004). *FSG* measures the association between cue and target in terms of response probabilities. Higher values denote a greater probability of target being elicited as a response.
+
+<span style="color:#33a597">**Cosine (COS):**</span> This column contains *COS* values taken from Buchanan et al.'s (2019) feature production norms. This value represents the degree of semantic similarity between two items.
 
 ### Table 2: Cue-Target Affordance Properties {#table2}
 
