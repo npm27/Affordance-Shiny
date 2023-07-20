@@ -76,7 +76,11 @@ Table 1 provides lexical properties for each cue item, including body-object int
 
 <span style="color:#33a597">**Age of Acquisition (AoA):**</span> *AoA* reflects the average age at which a word is learned. Values reported in this column are take from Kuperman et al. (2012).
 
-<span style="color:#33a597">**n:**</span> This column displays the number of participants who responded to each cue item in the affordance dataset.
+<span style="color:#33a597">**n.unique:**</span> This column displays the total number of participants who responded to each cue item in the affordance dataset.
+
+<span style="color:#33a597">**n.unique.affordance:**</span> Values in this column reflect the number of participants who provided at least one **affordance response (e.g., action)** to each cue item.
+
+<span style="color:#33a597">**total.affordance:**</span> The total number of affordances provided for each cue. This value includes multiple uses provided by the same participant
 
 ### Table 1: Cue Item Lexical Properties {#table1}
 
