@@ -76,6 +76,10 @@ Table 1 provides lexical properties for each cue item, including body-object int
 
 <span style="color:#33a597">**Age of Acquisition (AoA):**</span> *AoA* reflects the average age at which a word is learned. Values reported in this column are take from Kuperman et al. (2012).
 
+<span style="color:#33a597">**Length:**</span> The *Length* column denotes the total number of characters in each cue word.
+
+<span style="color:#33a597">**Affordance Set Size (AFSS):**</span> *AFSS* values denote the total number of unique affordances elicited for each cue.
+
 <span style="color:#33a597">**n.unique:**</span> This column displays the total number of participants who responded to each cue item in the affordance dataset.
 
 <span style="color:#33a597">**n.unique.affordance:**</span> Values in this column reflect the number of participants who provided at least one **affordance response (e.g., action)** to each cue item.
@@ -140,8 +144,6 @@ Table 2 displays the full affordance norms dataset and provides options for sear
 <span style="color:#33a597">**Target:**</span> The affordance response to each cue. Items in the *Target* column have been lemmatized. Note that only verb responses are displayed in this table.
 
 <span style="color:#33a597">**Affordance Strength (AFS):**</span> Values in this column reflect the probability of a specific target being provided as a response to a cue. AFS values were computed by first computing the frequency of each unique response to a cue, which was then divided by the total number of responses the cue received. Higher AFS values indicate a greater likelihood that an object will elicit a specific affordance as an action response. Note that this value only considers *verb* responses, as by nature, affordances reflect action properties.
-
-<span style="color:#33a597">**Affordance Set-Size (AFSS):**</span> This column displays the total number of unique targets that were provided for each cue. Higher values indicate a greater number of perceived affordances.
 
 <span style="color:#33a597">**Forward Strength (FSG):**</span> Values in this column denote forward strength values taken from the University of South Florida Free Association Norms (Nelson et al., 2004). *FSG* measures the association between cue and target in terms of response probabilities. Higher values denote a greater probability of target being elicited as a response.
 

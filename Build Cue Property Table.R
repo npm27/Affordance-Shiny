@@ -65,8 +65,11 @@ combined5 = merge(combined4, aoa, by.x = "cues",
 combined5 = combined5[ , -c(8:10, 12:13)]
 colnames(combined5)[8] = "AoA"
 
+##now get length
+combined5$Length = nchar(combined5$cues)
+
 ##reorder columns (put n last)
-combined5 = combined5[ , c(1:4, 8, 5:7)]
+combined5 = combined5[ , c(1:4, 8:9, 5:7)]
 
 ####Write to .csv####
 #write.csv(combined5, file = "Cue Table.csv", row.names = F)
