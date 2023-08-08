@@ -14,6 +14,9 @@ con = read.csv("2 Norm Sets/Concreteness.csv")
 frq = read.csv("2 Norm Sets/SUBTLEX-US.csv")
 aoa = read.csv("2 Norm Sets/Kuperman AOA.csv")
 
+AFSS = affordances[ , c(1, 4)]
+AFSS = unique(AFSS)
+
 BOI$Word = tolower(BOI$Word)
 con$Word = tolower(con$Word)
 frq$Word = tolower(frq$Word)
@@ -68,8 +71,13 @@ colnames(combined5)[8] = "AoA"
 ##now get length
 combined5$Length = nchar(combined5$cues)
 
+##ADD AFSS
+combined6 = cbind(combined5, AFSS)
+  
 ##reorder columns (put n last)
-combined5 = combined5[ , c(1:4, 8:9, 5:7)]
+combined6 = combined6[ , c(1, 11, 2:4, 8:9, 5:7)]
+
+colnames(combined6)[1] = "Cue"
 
 ####Write to .csv####
-#write.csv(combined5, file = "Cue Table.csv", row.names = F)
+#write.csv(combined6, file = "Cue Table.csv", row.names = F)

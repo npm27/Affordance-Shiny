@@ -32,4 +32,4 @@ combined2 = combined2[ , -c(7:13)]
 
 colnames(combined2)[6] = "COS"
 
-#write.csv(combined2, file = "Affordance Norms_fsg.csv", row.names = F)
+#write.csv(combined2[ , -4], file = "Affordance Norms_fsg.csv", row.names = F)

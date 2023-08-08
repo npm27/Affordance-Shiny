@@ -39,8 +39,8 @@ cues$SUBTLEX = format(round(cues$SUBTLEX, digits = 3), nsmall = 3)
 
 ##fix column names
 colnames(cues)[1] = "Cue"
-colnames(cues)[3] = "Concreteness"
-colnames(cues)[4] = "Frequency"
+colnames(cues)[4] = "Concreteness"
+colnames(cues)[5] = "Frequency"
 
 ##fix numeric variables
 cues$BOI = as.numeric(cues$BOI)
@@ -68,6 +68,8 @@ Table 1 provides lexical properties for each cue item, including body-object int
 
 <span style="color:#33a597">**Cue:**</span> The word presented in the norming task. Participants provided open-ended responses indicating how each cue item could be used (i.e., what actions the presented object afforded).
 
+<span style="color:#33a597">**Affordance Set Size (AFSS):**</span> *AFSS* values denote the total number of unique affordances elicited for each cue.
+
 <span style="color:#33a597">**Body-Object Interaction (BOI):**</span> Values reported in the *BOI* column assess the ease with which individuals can interact with an object. Higher ratings denote greater ease of interaction. These ratings were taken from Pexman et al. (2019)
 
 <span style="color:#33a597">**Concreteness:**</span> *Concreteness* ratings measure the degree to which a concept refers to a perceptual, tangible object. Values in this column are derived from Brysbaert et al. (2014).
@@ -77,8 +79,6 @@ Table 1 provides lexical properties for each cue item, including body-object int
 <span style="color:#33a597">**Age of Acquisition (AoA):**</span> *AoA* reflects the average age at which a word is learned. Values reported in this column are take from Kuperman et al. (2012).
 
 <span style="color:#33a597">**Length:**</span> The *Length* column denotes the total number of characters in each cue word.
-
-<span style="color:#33a597">**Affordance Set Size (AFSS):**</span> *AFSS* values denote the total number of unique affordances elicited for each cue.
 
 <span style="color:#33a597">**n.unique:**</span> This column displays the total number of participants who responded to each cue item in the affordance dataset.
 
