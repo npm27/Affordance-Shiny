@@ -19,7 +19,7 @@ combined = merge(afs, fsg, by.x = c("Cue", "Target"),
                  by.y = c("Cue", "Target"), all.x = TRUE, all.y = FALSE)
 
 ##Drop BSG and SYM Columns
-combined = combined[ , -c(6:7)]
+combined = combined[ , -c(7:8)]
 
 ####Add the Buchanan Norms####
 colnames(sem)[1] = "Cue"
@@ -28,8 +28,8 @@ colnames(sem)[2] = "Target"
 combined2 = merge(combined, sem, by.x = c("Cue", "Target"), 
                  by.y = c("Cue", "Target"), all.x = TRUE, all.y = FALSE)
 
-combined2 = combined2[ , -c(7:13)]
+combined2 = combined2[ , -c(8:14)]
 
-colnames(combined2)[6] = "COS"
+colnames(combined2)[7] = "COS"
 
-#write.csv(combined2[ , -4], file = "Affordance Norms_fsg.csv", row.names = F)
+#write.csv(combined2[ , -5], file = "Affordance Norms_fsg.csv", row.names = F)

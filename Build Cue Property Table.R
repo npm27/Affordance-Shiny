@@ -14,7 +14,7 @@ con = read.csv("2 Norm Sets/Concreteness.csv")
 frq = read.csv("2 Norm Sets/SUBTLEX-US.csv")
 aoa = read.csv("2 Norm Sets/Kuperman AOA.csv")
 
-AFSS = affordances[ , c(1, 4)]
+AFSS = affordances[ , c(1, 5)]
 AFSS = unique(AFSS)
 
 BOI$Word = tolower(BOI$Word)
