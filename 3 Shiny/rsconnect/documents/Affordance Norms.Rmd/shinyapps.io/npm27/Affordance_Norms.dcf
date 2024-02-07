@@ -5,9 +5,9 @@ account: npm27
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 7727172
-bundleId: 7550317
+bundleId: 8231286
 url: https://npm27.shinyapps.io/Affordance_Norms/
-when: 1691631054.91572
-lastSyncTime: 1691631054.91574
+when: 1707343976.82228
+lastSyncTime: 1707343976.82232
 asMultiple: FALSE
 asStatic: FALSE

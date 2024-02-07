@@ -13,6 +13,9 @@ BOI = read.csv("2 Norm Sets/BOI.csv")
 con = read.csv("2 Norm Sets/Concreteness.csv")
 frq = read.csv("2 Norm Sets/SUBTLEX-US.csv")
 aoa = read.csv("2 Norm Sets/Kuperman AOA.csv")
+qss = read.csv("2 Norm Sets/usf_norms set size.csv")
+
+colnames(qss)[1] = "Word"
 
 AFSS = affordances[ , c(1, 5)]
 AFSS = unique(AFSS)
@@ -21,6 +24,11 @@ BOI$Word = tolower(BOI$Word)
 con$Word = tolower(con$Word)
 frq$Word = tolower(frq$Word)
 aoa$Word = tolower(aoa$Word)
+qss$Word = tolower(qss$Word)
+
+#get only unique qss
+qss2 = qss[ , c(1, 3)]
+qss2 = unique(qss2)
 
 ##load the n's
 n = read.csv("1 Affordance Data/affordance ns.csv")
@@ -73,11 +81,17 @@ combined5$Length = nchar(combined5$cues)
 
 ##ADD AFSS
 combined6 = cbind(combined5, AFSS)
+
+#ADD qss
+combined7 = merge(combined6, qss2, by.x = "cues",
+                  by.y = "Word", all.x = TRUE, all.y = FALSE)
+
+combined7 = combined7[ , -10]
   
 ##reorder columns (put n last)
-combined6 = combined6[ , c(1, 11, 2:4, 8:9, 5:7)]
+combined7 = combined7[ , c(1, 10, 2:4, 8:9, 11, 5:7)]
 
-colnames(combined6)[1] = "Cue"
+colnames(combined7)[1] = "Cue"
 
 ####Write to .csv####
-#write.csv(combined6, file = "Cue Table.csv", row.names = F)
+#write.csv(combined7, file = "Cue Table.csv", row.names = F)

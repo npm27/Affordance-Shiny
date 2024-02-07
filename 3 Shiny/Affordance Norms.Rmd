@@ -42,6 +42,10 @@ colnames(cues)[1] = "Cue"
 colnames(cues)[4] = "Concreteness"
 colnames(cues)[5] = "Frequency"
 
+colnames(cues)[9] = "n"
+colnames(cues)[10] = "n.affordance"
+colnames(cues)[11] = "affordance count"
+
 ##fix numeric variables
 cues$BOI = as.numeric(cues$BOI)
 cues$Concreteness = as.numeric(cues$Concreteness)
@@ -80,11 +84,13 @@ Table 1 provides lexical properties for each cue item, including body-object int
 
 <span style="color:#33a597">**Length:**</span> The *Length* column denotes the total number of characters in each cue word.
 
-<span style="color:#33a597">**n.unique:**</span> This column displays the total number of participants who responded to each cue item in the affordance dataset.
+<span style="color:#33a597">**Cue Set Size (QSS):**</span> The *QSS* column indicates the total number words associated with to the cue Based on the University of South Florida Free Association Norms (Nelson et al., 2004)
 
-<span style="color:#33a597">**n.unique.affordance:**</span> Values in this column reflect the number of participants who provided at least one **affordance response (e.g., action)** to each cue item.
+<span style="color:#33a597">**n:**</span> This column displays the total number of participants who provided at least one response to the cue.
 
-<span style="color:#33a597">**total.affordance:**</span> The total number of affordances provided for each cue. This value includes multiple uses provided by the same participant
+<span style="color:#33a597">**n.affordance:**</span> Values in this column reflect the number of participants who provided at least one *affordance response* (i.e., an action) to the cue.
+
+<span style="color:#33a597">**affordance count:**</span> The total number of affordances provided for each cue. This value includes multiple uses provided by the same participant
 
 ### Table 1: Cue Item Lexical Properties {#table1}
 
@@ -143,13 +149,13 @@ Table 2 displays the full affordance norms dataset and provides options for sear
 
 <span style="color:#33a597">**Target:**</span> The affordance response to each cue. Items in the *Target* column have been lemmatized. Note that only verb responses are displayed in this table.
 
-<span style="color:#33a597">**Affordance Strength (AFS):**</span> Values in this column reflect the probability of a specific target being provided as a response to a cue. AFS values were computed by first computing the frequency of each unique affordance response to a cue, which was then divided by the total number of responses the cue received. Higher AFS values indicate a greater likelihood that an object will elicit a specific affordance as an action response. Note that this value only considers *verb* responses, as by nature, affordances reflect action properties.
+<span style="color:#33a597">**Affordance Strength (AFS):**</span> Values in this column reflect the probability of a specific target being provided as a response to a cue. AFS values were computed as the frequency of each unique affordance divided by the total number of responses the cue received. Higher AFS values indicate a greater likelihood that an object will elicit a specific affordance as an action response. Note that this value only considers *verb* responses, as by nature, affordances reflect action properties.
 
-<span style="color:#33a597">**Affordance Percentage (AFP):**</span> This column denotes the percentage of participants who responded to each cue with a given affordance. AFP values were calculated by computing the frequency of each unique affordance response and dividing by the total number of participants who responsed to the cue. Higher AFP values denote a greater percentage of participants who provided the affordance. Like AFS, AFP was calculated using *verb* responses only.
+<span style="color:#33a597">**Affordance Proportion (AFP):**</span> This column denotes the proportion of participants who responded to a cue with a specific affordance. AFP values were computed as the frequency of each unique affordance divided by the total number of participants who responsed to the cue. Higher AFP values denote a greater proportion of participants who provided the affordance. Like AFS, AFP was calculated using *verb* responses only.
 
 <span style="color:#33a597">**Forward Strength (FSG):**</span> Values in this column denote forward strength values taken from the University of South Florida Free Association Norms (Nelson et al., 2004). *FSG* measures the association between cue and target in terms of response probabilities. Higher values denote a greater probability of target being elicited as a response.
 
-<span style="color:#33a597">**Cosine (COS):**</span> This column contains *COS* values taken from Buchanan et al.'s (2019) feature production norms. This value represents the degree of semantic similarity between two items.
+<span style="color:#33a597">**Cosine Similarity (COS):**</span> This column contains *COS* values taken from Buchanan et al.'s (2019) feature production norms. This value represents the degree of semantic similarity between two items.
 
 ### Table 2: Cue-Target Affordance Properties {#table2}
 
