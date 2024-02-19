@@ -37,12 +37,14 @@ cues$BOI = format(round(cues$BOI, digits = 3), nsmall = 3)
 cues$Concrete = format(round(cues$Concrete, digits = 3), nsmall = 3)
 cues$SUBTLEX = format(round(cues$SUBTLEX, digits = 3), nsmall = 3)
 
+affordances$AFP = format(round(affordances$AFP, digits = 3), nsmall = 3)
+
 ##fix column names
 colnames(cues)[1] = "Cue"
 colnames(cues)[4] = "Concreteness"
 colnames(cues)[5] = "Frequency"
 
-colnames(cues)[9] = "n"
+colnames(cues)[9] = "n.participant"
 colnames(cues)[10] = "n.affordance"
 colnames(cues)[11] = "affordance count"
 
@@ -66,7 +68,7 @@ This page provides a searchable interface for our affordance norming project. Th
 
 Table 1 provides lexical properties for each cue item, including body-object interaction ratings (*BOI*; [Pexman et al., 2019](https://link.springer.com/article/10.3758/s13428-018-1171-z)), *concreteness* ([Brysbaert et al., 2014](https://link.springer.com/article/10.3758/s13428-013-0403-5)), *SUBLTEX frequency* ([Brysbaert & New, 2009](https://link.springer.com/article/10.3758/BRM.41.4.977)), and age-of-acquisition (*AOA*; [Kuperman et al., 2012](https://link.springer.com/article/10.3758/s13428-012-0210-4)), and the number of participants who responded to each cue in our dataset (*n*).
 
-<span style="color:#33a597">**Note:**</span> A .csv file containing the full set of cue properties is available for download [here](https://github.com/npm27/Affordance-Shiny/blob/main/Cue%20Table.csv). The data can also be downloaded or copied to the clipboard using the buttons located at the bottom of the table.
+<span style="color:#33a597">**Note:**</span> A .csv file containing the full set of cue properties is available for download [here](https://github.com/npm27/Affordance-Shiny/blob/main/Cue%20Table.csv). The data can also be downloaded or copied to the clipboard using the buttons located at the bottom of the table (Please note that you will need to scroll to the bottom of each table to access the download buttons and horizontal scrollbar).
 
 ### Column Descriptions
 
@@ -86,7 +88,7 @@ Table 1 provides lexical properties for each cue item, including body-object int
 
 <span style="color:#33a597">**Cue Set Size (QSS):**</span> The *QSS* column indicates the total number words associated with to the cue Based on the University of South Florida Free Association Norms (Nelson et al., 2004)
 
-<span style="color:#33a597">**n:**</span> This column displays the total number of participants who provided at least one response to the cue.
+<span style="color:#33a597">**n.participant:**</span> This column displays the total number of participants who provided at least one response to the cue.
 
 <span style="color:#33a597">**n.affordance:**</span> Values in this column reflect the number of participants who provided at least one *affordance response* (i.e., an action) to the cue.
 
@@ -106,6 +108,8 @@ ui = fluidPage(
         }")),
    
    tags$style(HTML('table.dataTable tr.selected td, table.dataTable td.selected {background-color: #33a597 !important;}')),
+   tags$style(HTML('table.dataTable thead tr td {color: black !important;}')),
+   tags$head(tags$style(HTML( '.has-feedback .form-control { padding-right: 0px;}' ))) 
    ) #fluidpage
 
 server = function(input, output) {
@@ -123,7 +127,8 @@ server = function(input, output) {
                options = list(
                  dom = 'rtpB',
                  buttons = c('copy', 'csv', 'excel'),
-                 paging = FALSE
+                 paging = TRUE,
+                 pageLength = 100
                ) #close options
                ) #close data table 
      
@@ -132,7 +137,7 @@ server = function(input, output) {
 }
 
 # Run the application 
-shinyApp(ui = ui, server = server, options = list(height = 550))
+shinyApp(ui = ui, server = server, options = list(height = 500))
 ```
 
 
@@ -164,12 +169,14 @@ Table 2 displays the full affordance norms dataset and provides options for sear
 ui = fluidPage(
    div(style = 'overflow-x: scroll', DTOutput("affordance_table")),
    theme = shinytheme("cyborg"),
+   
    #change the color of page 
    tags$style(HTML(".dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper    .dataTables_info, .dataTables_wrapper .dataTables_processing,.dataTables_wrapper .dataTables_paginate .paginate_button, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled {
             color: #33a597 !important;
         }")),
    
    tags$style(HTML('table.dataTable tr.selected td, table.dataTable td.selected {background-color: #33a597 !important;}')),
+   tags$style(HTML('table.dataTable thead tr td {color: black !important;}'))
    ) #fluidpage
 
 server = function(input, output) {
@@ -187,7 +194,8 @@ server = function(input, output) {
                options = list(
                  dom = 'rtpB',
                  buttons = c('copy', 'csv', 'excel'),
-                 paging = FALSE
+                 paging = TRUE,
+                 pageLength = 100
                ) #close options
                ) #close data table 
      
@@ -196,7 +204,7 @@ server = function(input, output) {
 }
 
 # Run the application 
-shinyApp(ui = ui, server = server, options = list(height = 550))
+shinyApp(ui = ui, server = server, options = list(height = 500))
 ```
 
 
