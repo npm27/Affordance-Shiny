@@ -54,6 +54,7 @@ cues$Concreteness = as.numeric(cues$Concreteness)
 cues$Frequency = as.numeric(cues$Frequency)
 
 affordances$AFS = as.numeric(affordances$AFS)
+affordances$AFP = as.numeric(affordances$AFP)
 
 ```
 
@@ -68,7 +69,7 @@ This page provides a searchable interface for our affordance norming project. Th
 
 Table 1 provides lexical properties for each cue item, including body-object interaction ratings (*BOI*; [Pexman et al., 2019](https://link.springer.com/article/10.3758/s13428-018-1171-z)), *concreteness* ([Brysbaert et al., 2014](https://link.springer.com/article/10.3758/s13428-013-0403-5)), *SUBLTEX frequency* ([Brysbaert & New, 2009](https://link.springer.com/article/10.3758/BRM.41.4.977)), and age-of-acquisition (*AOA*; [Kuperman et al., 2012](https://link.springer.com/article/10.3758/s13428-012-0210-4)), and the number of participants who responded to each cue in our dataset (*n*).
 
-<span style="color:#33a597">**Note:**</span> A .csv file containing the full set of cue properties is available for download [here](https://github.com/npm27/Affordance-Shiny/blob/main/Cue%20Table.csv). The data can also be downloaded or copied to the clipboard using the buttons located at the bottom of the table (Please note that you will need to scroll to the bottom of each table to access the download buttons and horizontal scrollbar).
+<span style="color:#33a597">**Note:**</span> A .csv file containing the full set of cue properties is available for download [here](https://github.com/npm27/Affordance-Shiny/blob/main/Cue%20Table.csv). The filtered data can be downloaded or copied to the clipboard using the buttons located at the bottom of the table (Please note that you will need to scroll to the bottom of each table to access the download buttons and horizontal scrollbar).
 
 ### Column Descriptions
 
@@ -146,7 +147,7 @@ shinyApp(ui = ui, server = server, options = list(height = 500))
 
 Table 2 displays the full affordance norms dataset and provides options for searching and filtering the dataset. The filtered table can be downloaded to .csv or.xlsx for further analysis. Forward strength (FSG) values derived from ([Nelson et al., 2004](https://link.springer.com/article/10.3758/BF03195588)) and cosine values (COS) taken from ([Buchanan et al., 2019](https://link.springer.com/article/10.3758/s13428-019-01243-z)) are provided when available.
 
-<span style="color:#33a597">**Note:**</span> You can download a .csv file containing the full set of affordance norms [here](https://github.com/npm27/Affordance-Norms/blob/main/4%20Analyses/R/Affordance%20Norms.csv). The data can also be downloaded or copied to the clipboard using the buttons located at the bottom of the table.
+<span style="color:#33a597">**Note:**</span> You can download a .csv file containing the full set of affordance norms [here](https://github.com/npm27/Affordance-Shiny/blob/main/3%20Shiny/Data/Affordance%20Norms_fsg.csv). The filtered data can also be downloaded or copied to the clipboard using the buttons located at the bottom of the table (you will need to scroll to the bottom of the table).
 
 ### Column Descriptions
 
@@ -158,7 +159,7 @@ Table 2 displays the full affordance norms dataset and provides options for sear
 
 <span style="color:#33a597">**Affordance Proportion (AFP):**</span> This column denotes the proportion of participants who responded to a cue with a specific affordance. AFP values were computed as the frequency of each unique affordance divided by the total number of participants who responsed to the cue. Higher AFP values denote a greater proportion of participants who provided the affordance. Like AFS, AFP was calculated using *verb* responses only.
 
-<span style="color:#33a597">**Forward Strength (FSG):**</span> Values in this column denote forward strength values taken from the University of South Florida Free Association Norms (Nelson et al., 2004). *FSG* measures the association between cue and target in terms of response probabilities. Higher values denote a greater probability of target being elicited as a response.
+<span style="color:#33a597">**Forward Associative Strength (FAS):**</span> Values in this column denote forward associative strength values taken from the University of South Florida Free Association Norms (Nelson et al., 2004). *FAS* measures the association between cue and target in terms of response probabilities. Higher values denote a greater probability of target being elicited as a response.
 
 <span style="color:#33a597">**Cosine Similarity (COS):**</span> This column contains *COS* values taken from Buchanan et al.'s (2019) feature production norms. This value represents the degree of semantic similarity between two items.
 
