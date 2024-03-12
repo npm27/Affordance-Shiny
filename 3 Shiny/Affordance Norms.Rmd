@@ -56,6 +56,7 @@ cues$Frequency = as.numeric(cues$Frequency)
 affordances$AFS = as.numeric(affordances$AFS)
 affordances$AFP = as.numeric(affordances$AFP)
 
+colnames(affordances)[5] = "FAS"
 ```
 
 
@@ -69,7 +70,7 @@ This page provides a searchable interface for our affordance norming project. Th
 
 Table 1 provides lexical properties for each cue item, including body-object interaction ratings (*BOI*; [Pexman et al., 2019](https://link.springer.com/article/10.3758/s13428-018-1171-z)), *concreteness* ([Brysbaert et al., 2014](https://link.springer.com/article/10.3758/s13428-013-0403-5)), *SUBLTEX frequency* ([Brysbaert & New, 2009](https://link.springer.com/article/10.3758/BRM.41.4.977)), and age-of-acquisition (*AOA*; [Kuperman et al., 2012](https://link.springer.com/article/10.3758/s13428-012-0210-4)), and the number of participants who responded to each cue in our dataset (*n*).
 
-<span style="color:#33a597">**Note:**</span> A .csv file containing the full set of cue properties is available for download [here](https://github.com/npm27/Affordance-Shiny/blob/main/Cue%20Table.csv). The filtered data can be downloaded or copied to the clipboard using the buttons located at the bottom of the table (Please note that you will need to scroll to the bottom of each table to access the download buttons and horizontal scrollbar).
+<span style="color:#33a597">**Note:**</span> The Cue Properties table can be filtered and sorted using the fields at the top of the table. A subset containing the filtered data can be downloaded or copied to the clipboard using the buttons located at the bottom of the table (Please note that you will need to scroll to the bottom of each table to access the download buttons and horizontal scrollbar). To download the full Cue Properties dataset, please use this [link](https://github.com/npm27/Affordance-Shiny/blob/main/Cue%20Table.csv).
 
 ### Column Descriptions
 
@@ -129,7 +130,7 @@ server = function(input, output) {
                  dom = 'rtpB',
                  buttons = c('copy', 'csv', 'excel'),
                  paging = TRUE,
-                 pageLength = 100
+                 pageLength = 3000
                ) #close options
                ) #close data table 
      
@@ -143,11 +144,11 @@ shinyApp(ui = ui, server = server, options = list(height = 500))
 
 
 
-## Cue-Target Affordance Properties
+## Cue-Affordance Properties
 
-Table 2 displays the full affordance norms dataset and provides options for searching and filtering the dataset. The filtered table can be downloaded to .csv or.xlsx for further analysis. Forward strength (FSG) values derived from ([Nelson et al., 2004](https://link.springer.com/article/10.3758/BF03195588)) and cosine values (COS) taken from ([Buchanan et al., 2019](https://link.springer.com/article/10.3758/s13428-019-01243-z)) are provided when available.
+Table 2 displays the full Cue-Affordance norms dataset and provides options for searching and filtering the dataset. Forward associative strength (FAS) values are derived from ([Nelson et al., 2004](https://link.springer.com/article/10.3758/BF03195588)) and cosine values (COS) taken from ([Buchanan et al., 2019](https://link.springer.com/article/10.3758/s13428-019-01243-z)) are provided when available.
 
-<span style="color:#33a597">**Note:**</span> You can download a .csv file containing the full set of affordance norms [here](https://github.com/npm27/Affordance-Shiny/blob/main/3%20Shiny/Data/Affordance%20Norms_fsg.csv). The filtered data can also be downloaded or copied to the clipboard using the buttons located at the bottom of the table (you will need to scroll to the bottom of the table).
+<span style="color:#33a597">**Note:**</span> The Cue-Affordance Properties table can be filtered and sorted using the fields at the top of the table. A subset containing the filtered data can be downloaded or copied to the clipboard using the buttons located at the bottom of the table (Please note that you will need to scroll to the bottom of each table to access the download buttons and horizontal scrollbar). To download the full Cue-Affordance Properties dataset, please use this [link](https://github.com/npm27/Affordance-Shiny/blob/main/3%20Shiny/Data/Affordance%20Norms_fsg.csv).
 
 ### Column Descriptions
 
@@ -196,7 +197,7 @@ server = function(input, output) {
                  dom = 'rtpB',
                  buttons = c('copy', 'csv', 'excel'),
                  paging = TRUE,
-                 pageLength = 100
+                 pageLength = 3000
                ) #close options
                ) #close data table 
      
