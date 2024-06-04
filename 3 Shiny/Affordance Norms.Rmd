@@ -33,9 +33,13 @@ affordances$AFS = format(round(affordances$AFS, digits = 3), nsmall = 3)
 colnames(affordances)[1] = "Cue"
 colnames(affordances)[2] = "Affordance"
 
-cues$BOI = format(round(cues$BOI, digits = 3), nsmall = 3)
-cues$Concrete = format(round(cues$Concrete, digits = 3), nsmall = 3)
-cues$SUBTLEX = format(round(cues$SUBTLEX, digits = 3), nsmall = 3)
+cues$Animacy[cues$Animacy == "    NA"] = ""
+cues$Animacy = as.numeric(cues$Animacy)
+
+cues$BOI = format(round(cues$BOI, digits = 2), nsmall = 2)
+cues$Concrete = format(round(cues$Concrete, digits = 2), nsmall = 2)
+cues$SUBTLEX = format(round(cues$SUBTLEX, digits = 2), nsmall = 2)
+cues$Animacy = format(round(cues$Animacy, digits = 3), nsmall = 2)
 
 affordances$AFP = format(round(affordances$AFP, digits = 3), nsmall = 3)
 
@@ -44,14 +48,15 @@ colnames(cues)[1] = "Cue"
 colnames(cues)[4] = "Concreteness"
 colnames(cues)[5] = "Frequency"
 
-colnames(cues)[9] = "n.participant"
-colnames(cues)[10] = "n.affordance"
+colnames(cues)[10] = "n.participant"
+colnames(cues)[12] = "n.affordance"
 colnames(cues)[11] = "affordance count"
 
 ##fix numeric variables
 cues$BOI = as.numeric(cues$BOI)
 cues$Concreteness = as.numeric(cues$Concreteness)
 cues$Frequency = as.numeric(cues$Frequency)
+cues$Animacy = as.numeric(cues$Animacy)
 
 affordances$AFS = as.numeric(affordances$AFS)
 affordances$AFP = as.numeric(affordances$AFP)
@@ -68,7 +73,7 @@ This page provides a searchable interface for our affordance norming project. Th
 
 ## Cue Properties
 
-Table 1 provides lexical properties for each cue item, including body-object interaction ratings (*BOI*; [Pexman et al., 2019](https://link.springer.com/article/10.3758/s13428-018-1171-z)), *concreteness* ([Brysbaert et al., 2014](https://link.springer.com/article/10.3758/s13428-013-0403-5)), *SUBLTEX frequency* ([Brysbaert & New, 2009](https://link.springer.com/article/10.3758/BRM.41.4.977)), and age-of-acquisition (*AOA*; [Kuperman et al., 2012](https://link.springer.com/article/10.3758/s13428-012-0210-4)), and the number of participants who responded to each cue in our dataset (*n*).
+Table 1 provides lexical properties for each cue item, including body-object interaction ratings (*BOI*; [Pexman et al., 2019](https://link.springer.com/article/10.3758/s13428-018-1171-z)), *concreteness* ([Brysbaert et al., 2014](https://link.springer.com/article/10.3758/s13428-013-0403-5)), *SUBLTEX frequency* ([Brysbaert & New, 2009](https://link.springer.com/article/10.3758/BRM.41.4.977)), age-of-acquisition (*AOA*; [Kuperman et al., 2012](https://link.springer.com/article/10.3758/s13428-012-0210-4)), living vs. non-living ratings (*Animacy*; [VanArsdall & Blunt, 2022](https://link.springer.com/article/10.3758/s13421-021-01266-y), and the number of participants who responded to each cue in our dataset (*n*).
 
 <span style="color:#33a597">**Note:**</span> The Cue Properties table can be filtered and sorted using the fields at the top of the table. A subset containing the filtered data can be downloaded or copied to the clipboard using the buttons located at the bottom of the table (Please note that you will need to scroll to the bottom of each table to access the download buttons and horizontal scrollbar). To download the full Cue Properties dataset, please use this [link](https://github.com/npm27/Affordance-Shiny/blob/main/Cue%20Table.csv).
 
@@ -84,11 +89,13 @@ Table 1 provides lexical properties for each cue item, including body-object int
 
 <span style="color:#33a597">**Frequency:**</span> This value captures frequency of use in everyday language. Values reported in the *frequency* column are derived from the SUBTLEX-US frequency database, which contains frequency estimates for 51 million English words derived from movie and television subtitles (Brysbaert & New, 2009).
 
-<span style="color:#33a597">**Age of Acquisition (AoA):**</span> *AoA* reflects the average age at which a word is learned. Values reported in this column are take from Kuperman et al. (2012).
+<span style="color:#33a597">**Age of Acquisition (AoA):**</span> *AoA* reflects the average age at which a word is learned. Values reported in this column are taken from Kuperman et al. (2012).
 
 <span style="color:#33a597">**Length:**</span> The *Length* column denotes the total number of characters in each cue word.
 
 <span style="color:#33a597">**Cue Set Size (QSS):**</span> The *QSS* column indicates the total number words associated with the cue based on the University of South Florida Free Association Norms (Nelson et al., 2004).
+
+<span style="color:#33a597">**Animacy:**</span> The *Animacy* column reflects ratings on a general living versus living scale. Higher ratings denote living creatures. Ratings are taken from VanArsdall and Blunt (2022).
 
 <span style="color:#33a597">**n.participant:**</span> This column displays the total number of participants who provided at least one response to the cue.
 

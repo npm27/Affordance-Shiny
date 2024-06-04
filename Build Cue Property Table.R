@@ -14,6 +14,7 @@ con = read.csv("2 Norm Sets/Concreteness.csv")
 frq = read.csv("2 Norm Sets/SUBTLEX-US.csv")
 aoa = read.csv("2 Norm Sets/Kuperman AOA.csv")
 qss = read.csv("2 Norm Sets/usf_norms set size.csv")
+anm = read.csv("2 Norm Sets/Animacy.csv")
 
 colnames(qss)[1] = "Word"
 
@@ -25,6 +26,10 @@ con$Word = tolower(con$Word)
 frq$Word = tolower(frq$Word)
 aoa$Word = tolower(aoa$Word)
 qss$Word = tolower(qss$Word)
+anm$Word = tolower(anm$Word)
+
+#drop unused animacy columns
+anm = anm[ , c(1:3)]
 
 #get only unique qss
 qss2 = qss[ , c(1, 3)]
@@ -87,11 +92,18 @@ combined7 = merge(combined6, qss2, by.x = "cues",
                   by.y = "Word", all.x = TRUE, all.y = FALSE)
 
 combined7 = combined7[ , -10]
+
+##add animacy
+combined8 = merge(combined7, anm, by.x = "cues",
+                  by.y = "Word", all.x = TRUE, all.y = FALSE)
+
+combined8 = combined8[ , -12]
   
 ##reorder columns (put n last)
-combined7 = combined7[ , c(1, 10, 2:4, 8:9, 11, 5:7)]
+combined8 = combined8[ , c(1, 10, 2:4, 8:9, 11, 12, 5:7)]
 
-colnames(combined7)[1] = "Cue"
+colnames(combined8)[1] = "Cue"
+colnames(combined8)[9] = "Animacy"
 
 ####Write to .csv####
-#write.csv(combined7, file = "Cue Table.csv", row.names = F)
+#write.csv(combined8, file = "Cue Table.csv", row.names = F)
